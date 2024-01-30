@@ -91,10 +91,7 @@
             </div>
 
             <div class="form-group">
-
-
-                <!-- Inside your tasks.edit view -->
-
+                <!-- Assign Priority -->
                 <label for="priority">Priority:</label>
                 <select name="priority">
                     <option value="high" {{ $task->priority === 'high' ? 'selected' : '' }}>High</option>

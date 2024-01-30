@@ -10,6 +10,7 @@ class Task extends Model
     // Fillable attributes for mass assignment
     protected $fillable = ['title', 'description', 'duedate', 'status', 'deadline', 'reminder', 'assignee_id', 'priority'];
 
+
     // Use the HasFactory trait for model factories
     use HasFactory;
 

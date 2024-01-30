@@ -118,16 +118,20 @@
             </form>
         </div>    
         <ul class="task-list">
+
+            @php
+                $latestTask = \App\Models\Task::latest()->first();
+            @endphp
             <?php if (!empty($tasks)): ?>
                 <?php foreach ($tasks as $task): ?>
                     <li>
                         <div class="task-details">
-                            <p><strong>Title:</strong> <?= htmlspecialchars($task->title) ?></p>
-                            <p><strong>Description:</strong> <?= htmlspecialchars($task->description) ?></p>
-                            <p><strong>Due Date:</strong> <?= htmlspecialchars($task->duedate) ?></p>
-                            <p><strong>Status:</strong> <?= htmlspecialchars($task->status) ?></p>
-                            <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
-                            <p><strong>Priority:</strong> <?= htmlspecialchars($task->priority) ?></p>
+                            <p><strong>Title:</strong> <?= htmlspecialchars($latestTask->title) ?></p>
+                            <p><strong>Description:</strong> <?= htmlspecialchars($latestTask->description) ?></p>
+                            <p><strong>Due Date:</strong> <?= htmlspecialchars($latestTask->duedate) ?></p>
+                            <p><strong>Status:</strong> <?= htmlspecialchars($latestTask->status) ?></p>
+                            <p><strong>Assignee:</strong> {{ $latestTask->assignee ? $latestTask->assignee->name : 'Unassigned' }}</p>
+                            <p><strong>Priority:</strong> <?= htmlspecialchars($latestTask->priority) ?></p>
 
 
                         </div>
