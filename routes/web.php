@@ -37,48 +37,43 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['middleware' => 'checkLoggedIn'], function () {
-
+    // Fetch all Tasks
     Route::get('/dashboard', [TaskController::class, 'listallTasks'])->name('tasks.listallTasks');
 
     // Fetch all Tasks from Asana
-   Route::get('/fetch-asana-tasks', [AsanaController::class, 'fetchAsanaTasks'])->name('tasks.fetchAsanaTasks');
+    Route::get('/fetch-asana-tasks', [AsanaController::class, 'fetchAsanaTasks'])->name('tasks.fetchAsanaTasks');
 
 
-        // Route to create tasks
-        Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    // Route to create tasks
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
 
-        // Store/save tasks created using Post method
-        Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    // Store/save tasks created using Post method
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
-        // Get each task's details by passing taskID
-        Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
+    // Get each task's details by passing taskID
+    Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 
-        // Edit tasks
-        Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+    // Edit tasks
+    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
 
-        // Update tasks
-        Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    // Update tasks
+    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 
-        // Delete tasks
-        Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    // Delete tasks
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
-        // Display tasks that are overdue
-        Route::get('/tasks/overdue', [TaskController::class, 'overdue'])->name('tasks.overdue');
-
-
+    // Display tasks that are overdue
+    Route::get('/tasks/overdue', [TaskController::class, 'overdue'])->name('tasks.overdue');
 
 
+    // Get details of a task from Asana
+    Route::get('/tasks/{id}/details', [AsanaController::class, 'detailsFromAsana'])->name('tasks.detailsFromAsana');
 
-
-
-        // Get details of a task from Asana
-        Route::get('/tasks/{id}/details', [AsanaController::class, 'detailsFromAsana'])->name('tasks.detailsFromAsana');
-
-            // Your protected routes go here
-        Route::get('/', function () {
-                return view('welcome');
-            });            // Add more routes as needed
-        });
+        // Your protected routes go here
+    Route::get('/', function () {
+            return view('welcome');
+        });            // Add more routes as needed
+    });
 
 
 
