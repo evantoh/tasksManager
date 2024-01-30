@@ -8,6 +8,7 @@
     <title>Task List</title>
 
     <style>
+
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
@@ -16,12 +17,37 @@
             box-sizing: border-box;
         }
 
-        header {
+        /* Add new styles for the search form */
+        form.search-form {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        input.search-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        button.search-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
             background-color: #007BFF;
             color: #fff;
-            text-align: center;
-            padding: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
         }
+
+        button.search-button:hover {
+            background-color: #0056b3;
+        }
+
+
 
         main {
             max-width: 800px;
@@ -81,8 +107,16 @@
     <header>
 </header>
 
+
     <!-- Main content section -->
     <main>
+    <div>
+            <!-- Updated search form with new styles -->
+            <form action="{{ route('tasks.search') }}" method="GET" class="search-form">
+                <input type="text" name="query" placeholder="Search tasks by title,description,due date and status..." class="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+        </div>    
         <ul class="task-list">
             <?php if (!empty($tasks)): ?>
                 <?php foreach ($tasks as $task): ?>

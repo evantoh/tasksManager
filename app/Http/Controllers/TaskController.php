@@ -104,4 +104,18 @@ class TaskController extends Controller
         $overdueTasks = Task::where('duedate', '<', now())->get();
         return view('tasks.overdue', compact('overdueTasks'));
     }
+
+    //function to search task
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $tasks = Task::where('title', 'LIKE', "%$query%")
+                    ->orWhere('description', 'LIKE', "%$query%")
+                    ->orWhere('duedate', 'LIKE', "%$query%")
+                    ->orWhere('status', 'LIKE', "%$query%")
+                    ->get();
+        
+        return view('tasks.listAllTasks', compact('tasks'));
+    }
 }
