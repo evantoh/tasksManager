@@ -4,6 +4,9 @@
 
 This document provides an overview of the Task Management System implemented in the `TaskController` of a Laravel application. The system allows users to perform various operations such as creating,reading, editing and deleting tasks, as well as viewing tasks by use of thrid Party task mangaement api (ASANA).
 
+The `AsanaController` in a Laravel application is designed to interact with the Asana API for fetching tasks and retrieving details for specific tasks.
+
+
 ## Task Controller
 
 The `TaskController` is responsible for handling requests related to task management. It includes the following key functionalities:
@@ -77,6 +80,33 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Input:** Query parameter `query`
 
 ---
+*Note: Ensure that the `TaskRequest` form request class includes appropriate validation rules for task creation and update.*
+
+
+## Fetch Asana Tasks
+
+### Method: `fetchAsanaTasks`
+
+- **Description:** Fetches tasks from the Asana API and displays them in a view.
+- **Endpoint:** `https://app.asana.com/api/1.0/user_task_lists/1206441959768782/tasks`
+- **HTTP Method:** GET
+- **Dependencies:** Requires Asana access token configured in the application (`asana.access_token` in `config`).
+- **View:** `tasks`
+
+## Details From Asana
+
+### Method: `detailsFromAsana($id)`
+
+- **Description:** Retrieves details for a specific task from Asana API and displays them in a view.
+- **Endpoint:** `https://app.asana.com/api/1.0/tasks/{id}`
+- **HTTP Method:** GET
+- **Parameters:** `$id` - Task ID
+- **Dependencies:** Requires Asana access token configured in the application (`asana.access_token` in `config`).
+- **View:** `tasks.detailsFromAsana`
+
+---
+
+*Note: Ensure proper configuration of Asana access token and appropriate views for successful interaction with the Asana API.*
 
 ## Conclusion
 
