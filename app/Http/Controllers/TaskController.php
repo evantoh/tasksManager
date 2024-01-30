@@ -6,6 +6,8 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use Carbon\Carbon; // In-built date library
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class TaskController extends Controller
 {
@@ -20,7 +22,12 @@ class TaskController extends Controller
     // Function to create tasks
     public function create()
     {
-        return view('tasks.create');
+        $users = User::all();
+
+        return view('tasks.create', compact('users'));
+
+
+        // return view('tasks.create');
     }
 
     // Function to store tasks and add validation for some fields making them required
@@ -31,6 +38,8 @@ class TaskController extends Controller
                 'description' => 'required',
                 'duedate' => 'required',
                 'status' => 'required',
+                'assignee_id' => 'nullable|exists:users,id',
+
             ]);
 
             Task::create($request->all());
@@ -47,7 +56,9 @@ class TaskController extends Controller
     // Edit specific tasks by id
     public function edit(Task $task)
     {
-        return view('tasks.edit', compact('task'));
+        $users = User::all();
+
+        return view('tasks.edit', compact('task','users'));
     }
 
     // Update task after editing
@@ -59,6 +70,9 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'duedate' => 'nullable|date',
             'status' => 'nullable|in:to do,in progress,done',
+            'assignee_id' => 'nullable|exists:users,id',
+
+
         ]);
 
         // Convert date strings to Carbon objects

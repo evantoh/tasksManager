@@ -3,15 +3,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create Task</title>
-
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
-            margin: 10;
+            margin: 10px;
             padding: 0;
             box-sizing: border-box;
         }
@@ -74,29 +70,52 @@
 <body>
 
     <!-- Task creation form -->
-    <main>
-        <form action="{{ route('tasks.store') }}" method="post">
-            @csrf
+ <!-- Task creation form -->
+<!-- Task creation form -->
+<main>
+    <form action="{{ route('tasks.store') }}" method="post">
+        @csrf
 
-            <!-- Form fields -->
-            <label for="title">Title:</label>
-            <input type="text" name="title" required>
+        <!-- Form fields -->
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
 
-            <label for="description">Description:</label>
-            <textarea name="description"></textarea>
+        <label for="description">Description:</label>
+        <textarea name="description"></textarea>
 
-            <label for="duedate">Due Date:</label>
-            <input type="date" name="duedate">
+        <label for="duedate">Due Date:</label>
+        <input type="date" name="duedate">
 
-            <label for="status">Status:</label>
-            <select name="status">
-                <option value="to do">To Do</option>
-                <option value="in progress">In Progress</option>
-                <option value="done">Done</option>
-            </select>
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="to do">To Do</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+        </select>
 
-            <button type="submit" class="btn">Create Task</button>
-        </form>
-    </main>
+        <!-- Assignee Section (conditionally displayed) -->
+        @if (isset($task) && $task->assignee)
+            <label for="assignee_id">Assignee:</label>
+            <span>{{ $task->assignee->name }}</span>
+        @else
+            <p>No assignee selected.</p>
+        @endif
+
+        <!-- Add assignee field to the create/edit form -->
+        <label for="assignee_id">Assignee:</label>
+        <select name="assignee_id">
+            <option value="">Unassigned</option>
+            @foreach ($users as $user)
+                <option value="{{ $user->id }}" {{ isset($task) && $task->assignee_id == $user->id ? 'selected' : '' }}>
+                    {{ $user->name }}
+                </option>
+            @endforeach
+        </select>
+
+        <button type="submit" class="btn">Create Task</button>
+    </form>
+</main>
+
+
 </body>
 </x-app-layout>

@@ -79,8 +79,7 @@
 
 <body>
     <header>
-        <h1>Task List</h1>
-    </header>
+</header>
 
     <!-- Main content section -->
     <main>
@@ -93,6 +92,8 @@
                             <p><strong>Description:</strong> <?= htmlspecialchars($task->description) ?></p>
                             <p><strong>Due Date:</strong> <?= htmlspecialchars($task->duedate) ?></p>
                             <p><strong>Status:</strong> <?= htmlspecialchars($task->status) ?></p>
+                            <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
+
                         </div>
                         <a href="<?= route('tasks.show', $task->id) ?>" class="btn">Details</a>
                     </li>

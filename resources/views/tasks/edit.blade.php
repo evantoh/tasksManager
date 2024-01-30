@@ -68,6 +68,30 @@
                     <option value="done" {{ $task->status === 'done' ? 'selected' : '' }}>Done</option>
                 </select>
             </div>
+            <div class="form-group">
+                <!-- Assignee Section (conditionally displayed) -->
+                <!-- @if (isset($task) && $task->assignee)
+                    <label for="assignee_id">Assignee:</label>
+                    <span>{{ $task->assignee->name }}</span>
+                @else
+                    <p>No assignee selected.</p>
+                @endif -->
+
+                <!-- Add assignee field to the create/edit form -->
+                <label for="assignee_id">Assignee:</label>
+                <select name="assignee_id">
+                    <option value="">Unassigned</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}" {{ isset($task) && $task->assignee_id == $user->id ? 'selected' : '' }}>
+                            {{ $user->name }}
+                        </option>
+                    @endforeach
+        </select>
+    
+            </div>
+
+
+            
 
             <button type="submit" class="btn btn-primary">Update Task</button>
         </form>

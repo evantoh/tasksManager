@@ -74,6 +74,8 @@
             <p><strong>Description:</strong> <?= htmlspecialchars($task->description) ?></p>
             <p><strong>Due Date:</strong> <?= htmlspecialchars($task->duedate) ?></p>
             <p><strong>Status:</strong> <?= htmlspecialchars($task->status) ?></p>
+            <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
+
         </div>
 
         <!-- Button to edit the task -->

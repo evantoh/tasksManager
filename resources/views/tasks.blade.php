@@ -54,21 +54,6 @@
 </head>
 <body>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Task Manager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <!-- Task List Link in Navigation Bar -->
-            <li class="nav-item">
-                <a class="nav-link" class="btn btn-secondary" href="{{ route('tasks.listallTasks') }}">Back to Task List</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 
 <!-- Main Content Container -->
 <div class="container">
@@ -110,6 +95,8 @@
                             </tbody>
                         </table>
                         <!-- Back to Task List Button -->
+                        <a class="nav-link btn btn-secondary" href="{{ route('tasks.listallTasks') }}">Back to Task List</a>
+
 
                     @else
                         <!-- Displayed when No Tasks are Available -->
