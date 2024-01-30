@@ -25,9 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('tasks.listAllTasks');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+//Add search tasks functionality
+Route::get('/tasks/search', [TaskController::class, 'search'])->name('tasks.search');
 
 
 
@@ -69,8 +68,7 @@ Route::group(['middleware' => 'checkLoggedIn'], function () {
         // Display tasks that are overdue
         Route::get('/tasks/overdue', [TaskController::class, 'overdue'])->name('tasks.overdue');
 
-        //Add search tasks functionality
-        Route::get('/tasks/search', [TaskController::class, 'search'])->name('tasks.search');
+
 
 
 

@@ -116,6 +116,6 @@ class TaskController extends Controller
                     ->orWhere('status', 'LIKE', "%$query%")
                     ->get();
         
-        return view('tasks.listAllTasks', compact('tasks'));
+        return view('tasks.search', compact('tasks'));
     }
 }
