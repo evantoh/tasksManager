@@ -93,6 +93,8 @@
                             <p><strong>Due Date:</strong> <?= htmlspecialchars($task->duedate) ?></p>
                             <p><strong>Status:</strong> <?= htmlspecialchars($task->status) ?></p>
                             <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
+                            <p><strong>Priority:</strong> <?= htmlspecialchars($task->priority) ?></p>
+
 
                         </div>
                         <a href="<?= route('tasks.show', $task->id) ?>" class="btn">Details</a>

@@ -90,6 +90,19 @@
     
             </div>
 
+            <div class="form-group">
+
+
+                <!-- Inside your tasks.edit view -->
+
+                <label for="priority">Priority:</label>
+                <select name="priority">
+                    <option value="high" {{ $task->priority === 'high' ? 'selected' : '' }}>High</option>
+                    <option value="medium" {{ $task->priority === 'medium' ? 'selected' : '' }}>Medium</option>
+                    <option value="low" {{ $task->priority === 'low' ? 'selected' : '' }}>Low</option>
+                </select>
+            </div>
+
 
             
 

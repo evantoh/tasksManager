@@ -39,6 +39,8 @@ class TaskController extends Controller
                 'duedate' => 'required',
                 'status' => 'required',
                 'assignee_id' => 'nullable|exists:users,id',
+                'priority' => 'nullable|string|in:high,medium,low',
+
 
             ]);
 
@@ -71,6 +73,8 @@ class TaskController extends Controller
             'duedate' => 'nullable|date',
             'status' => 'nullable|in:to do,in progress,done',
             'assignee_id' => 'nullable|exists:users,id',
+            'priority' => 'nullable|string|in:high,medium,low',
+
 
 
         ]);
