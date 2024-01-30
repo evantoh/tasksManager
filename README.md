@@ -1,61 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p# Task Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introduction
 
-## About Laravel
+This document provides an overview of the Task Management System implemented in the `TaskController` of a Laravel application. The system allows users to perform various operations such as creating,reading, editing and deleting tasks, as well as viewing tasks by use of thrid Party task mangaement api (ASANA).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Task Controller
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The `TaskController` is responsible for handling requests related to task management. It includes the following key functionalities:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. List All Tasks
 
-## Learning Laravel
+- **Method:** `listAllTasks`
+- **Description:** Retrieves all tasks from the `Task` model and displays them in a view.
+- **View:** `tasks.listAllTasks`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 2. Create Task
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Method:** `create`
+- **Description:** Displays the view for creating a new task.
+- **View:** `tasks.create`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Store Task
 
-## Laravel Sponsors
+- **Method:** `store`
+- **Description:** Stores a new task in the database with validation for required fields. Associates the task with the authenticated user.
+- **Validation Rules:**
+  - `title`: Required
+  - `description`: Optional, string
+  - `duedate`: Optional, date
+  - `status`: Optional, must be one of 'to do', 'in progress', 'done'
+- **Redirects:**
+  - On success: Redirects to `/tasks` with a success message.
+  - On failure: Redirects to `/login` with an error message if the user is not authenticated.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 4. Show Task
 
-### Premium Partners
+- **Method:** `show`
+- **Description:** Displays details of a specific task.
+- **View:** `tasks.show`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 5. Edit Task
 
-## Contributing
+- **Method:** `edit`
+- **Description:** Displays the view for editing a specific task.
+- **View:** `tasks.edit`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 6. Update Task
 
-## Code of Conduct
+- **Method:** `update`
+- **Description:** Updates the details of a task with validation for required fields. Converts date strings to Carbon objects.
+- **Validation Rules:**
+  - `title`: Required
+  - `description`: Optional, string
+  - `duedate`: Optional, date
+  - `status`: Optional, must be one of 'to do', 'in progress', 'done'
+- **Redirects:**
+  - On success: Redirects to `/tasks` with a success message.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 7. Delete Task
+
+- **Method:** `destroy`
+- **Description:** Deletes a specific task.
+- **Redirects:** Redirects to `/tasks` with a success message.
+
+### 8. Overdue Tasks
+
+- **Method:** `overdue`
+- **Description:** Retrieves tasks with overdue due dates and displays them in a view.
+- **View:** `tasks.overdue`
+
+
+## 9.Search for Tasks
+
+### Method: `search`
+- **Description:** Searches for tasks based on title, description, due date, or status and displays the results in a view.
+- **Input:** Query parameter `query`
+
+---
+
+## Conclusion
+
+The Task Management System provides a comprehensive set of functionalities for managing tasks, allowing users to interact with their tasks efficiently.
+
 
 ## Security Vulnerabilities
 

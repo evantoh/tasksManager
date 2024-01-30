@@ -17,9 +17,6 @@ use App\Http\Controllers\AsanaController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Route::get('/', function () {
     return view('welcome');
