@@ -68,9 +68,6 @@
 </head>
 
 <body>
-
-    <!-- Task creation form -->
- <!-- Task creation form -->
 <!-- Task creation form -->
 <main>
     <form action="{{ route('tasks.store') }}" method="post">

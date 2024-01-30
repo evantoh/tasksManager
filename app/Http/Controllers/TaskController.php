@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon; // In-built date library
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Http\Requests\TasksvalidationRequest;
+use App\Http\Requests\TaskRequest;
+
+
 
 class TaskController extends Controller
 {
@@ -26,17 +28,17 @@ class TaskController extends Controller
 
         return view('tasks.create', compact('users'));
 
+
         // return view('tasks.create');
     }
 
     // Function to store tasks and add validation for some fields making them required
-    public function store(TasksvalidationRequest $request)
+    public function store(TaskRequest $request)
     {
-        // Validation is handled by the TaskRequest which is imported from Request
-        Task::create($request->all());
+            Task::create($request->all());
 
-        return redirect('/dashboard')->with('success', 'Task created successfully!');
-    }
+            return redirect('/dashboard')->with('success', 'Task created successfully!');
+        }
 
     // Show tasks
     public function show(Task $task)
@@ -49,13 +51,14 @@ class TaskController extends Controller
     {
         $users = User::all();
 
-        return view('tasks.edit', compact('task', 'users'));
+        return view('tasks.edit', compact('task','users'));
     }
 
-    // Update task after editing and Dependency Injection for carbon implemented
-    public function update(TasksvalidationRequest $request, Task $task, Carbon $carbon)
+    // Update task after editing
+    public function update(TaskRequest $request, Task $task)
     {
-        // Validation is handled by the TaskRequest which is imported from Request
+        // Convert date strings to Carbon objects
+        $request['duedate'] = $request['duedate'] ? Carbon::parse($request['duedate']) : null;
 
         // Update the task with the provided data
         $task->update($request->all());
@@ -80,17 +83,17 @@ class TaskController extends Controller
         return view('tasks.overdue', compact('overdueTasks'));
     }
 
-    // Function to search task
+    //function to search
     public function search(Request $request)
     {
         $query = $request->input('query');
-
+        
         $tasks = Task::where('title', 'LIKE', "%$query%")
-            ->orWhere('description', 'LIKE', "%$query%")
-            ->orWhere('duedate', 'LIKE', "%$query%")
-            ->orWhere('status', 'LIKE', "%$query%")
-            ->get();
-
-        return view('tasks.search', compact('tasks'));
+                    ->orWhere('description', 'LIKE', "%$query%")
+                    ->orWhere('duedate', 'LIKE', "%$query%")
+                    ->orWhere('status', 'LIKE', "%$query%")
+                    ->get();
+        
+        return view('tasks.listAllTasks', compact('tasks'));
     }
 }
