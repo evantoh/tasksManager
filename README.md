@@ -24,6 +24,8 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Method:** `create`
 - **Description:** Displays the view for creating a new task.
 - **View:** `tasks.create`
+-![listAllTasks](https://github.com/evantoh/tasksManager/blob/main/public/images/createTask.png)
+
 
 ### 3. Store Task
 
@@ -37,18 +39,24 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Redirects:**
   - On success: Redirects to `/tasks` with a success message.
   - On failure: Redirects to `/login` with an error message if the user is not authenticated.
+  -![login](https://github.com/evantoh/tasksManager/blob/main/public/images/loginCredentials.png)
+
 
 ### 4. Show Task
 
 - **Method:** `show`
 - **Description:** Displays details of a specific task.
 - **View:** `tasks.show`
+  -![shotasks](https://github.com/evantoh/tasksManager/blob/main/public/images/taskDetails.png)
+
 
 ### 5. Edit Task
 
 - **Method:** `edit`
 - **Description:** Displays the view for editing a specific task.
 - **View:** `tasks.edit`
+  -![editTask](https://github.com/evantoh/tasksManager/blob/main/public/images/editTask.png)
+
 
 ### 6. Update Task
 
@@ -67,6 +75,8 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Method:** `destroy`
 - **Description:** Deletes a specific task.
 - **Redirects:** Redirects to `/tasks` with a success message.
+  -![deleteTask](https://github.com/evantoh/tasksManager/blob/main/public/images/editTask.png)
+
 
 ### 8. Overdue Tasks
 
@@ -80,6 +90,8 @@ The `TaskController` is responsible for handling requests related to task manage
 ### Method: `search`
 - **Description:** Searches for tasks based on title, description, due date, or status and displays the results in a view.
 - **Input:** Query parameter `query`
+  -![searchTask](https://github.com/evantoh/tasksManager/blob/main/public/images/search.png)
+
 
 ---
 *Note: Ensure that the `TaskRequest` form request class includes appropriate validation rules for task creation and update.*
@@ -94,6 +106,8 @@ The `TaskController` is responsible for handling requests related to task manage
 - **HTTP Method:** GET
 - **Dependencies:** Requires Asana access token configured in the application (`asana.access_token` in `config`).
 - **View:** `tasks`
+  -![fetchAsanaTasks](https://github.com/evantoh/tasksManager/blob/main/public/images/displayAsanaDetails.png)
+
 
 ## Details From Asana
 
@@ -105,6 +119,8 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Parameters:** `$id` - Task ID
 - **Dependencies:** Requires Asana access token configured in the application (`asana.access_token` in `config`).
 - **View:** `tasks.detailsFromAsana`
+  -![detailsFromAsana](https://github.com/evantoh/tasksManager/blob/main/public/images/singleTaskAsana.png)
+
 
 ---
 
