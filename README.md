@@ -16,6 +16,8 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Method:** `listAllTasks`
 - **Description:** Retrieves all tasks from the `Task` model and displays them in a view.
 - **View:** `tasks.listAllTasks`
+-![listAllTasks](https://github.com/evantoh/tasksManager/blob/main/public/images/listAllTasks.png)
+
 
 ### 2. Create Task
 
