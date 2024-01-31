@@ -47,22 +47,6 @@
 </head>
 <body>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Task Manager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            <!-- Link to go back to Task List -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('tasks.listallTasks') }}">Back to Task List</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
 <!-- Main Content Container -->
 <div class="container">
     <div class="row">
@@ -93,7 +77,9 @@
             @endif
         </div>
     </div>
+
 </div>
+
 
 <!-- Bootstrap JavaScript Dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -12,9 +12,9 @@
         }
 
         /* Navigation Bar Styles */
-        .navbar {
+        /* .navbar {
             background-color: #007bff;
-        }
+        } */
 
         .navbar-dark .navbar-toggler-icon {
             background-color: #fff;

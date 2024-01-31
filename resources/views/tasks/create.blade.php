@@ -68,7 +68,8 @@
 </head>
 
 <body>
-<!-- Task creation form -->
+
+ <!-- Task creation form -->
 <main>
     <form action="{{ route('tasks.store') }}" method="post">
         @csrf
@@ -110,11 +111,13 @@
         </select>
 
         <!-- Assign Priority -->
+        <label for="priority">Priority:</label>
         <select name="priority">
             <option value="high">High</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
         </select>
+
 
         <button type="submit" class="btn">Create Task</button>
     </form>

@@ -69,10 +69,6 @@ Route::group(['middleware' => 'checkLoggedIn'], function () {
     // Get details of a task from Asana
     Route::get('/tasks/{id}/details', [AsanaController::class, 'detailsFromAsana'])->name('tasks.detailsFromAsana');
 
-        // Your protected routes go here
-    Route::get('/', function () {
-            return view('welcome');
-        });            // Add more routes as needed
     });
 
 

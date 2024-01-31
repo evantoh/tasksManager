@@ -1,0 +1,40 @@
+body {
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.btn-custom {
+    margin: 10px;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Custom styles for the carousel */
+.carousel {
+    margin-top: 20px;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
