@@ -75,7 +75,7 @@ The `TaskController` is responsible for handling requests related to task manage
 - **Method:** `destroy`
 - **Description:** Deletes a specific task.
 - **Redirects:** Redirects to `/tasks` with a success message.
-  -![deleteTask](https://github.com/evantoh/tasksManager/blob/main/public/images/editTask.png)
+  -![deleteTask](https://github.com/evantoh/tasksManager/blob/main/public/images/taskDetails.png)
 
 
 ### 8. Overdue Tasks
