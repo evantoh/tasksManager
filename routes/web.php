@@ -28,6 +28,7 @@ Route::get('/tasks/search', [TaskController::class, 'search'])->name('tasks.sear
 
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,8 +60,10 @@ Route::group(['middleware' => 'checkLoggedIn'], function () {
     // Update tasks
     Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 
-    // Delete tasks
+        // Delete tasks
     Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+
+
 
     // Display tasks that are overdue
     Route::get('/tasks/overdue', [TaskController::class, 'overdue'])->name('tasks.overdue');

@@ -42,6 +42,7 @@
         <h1>Edit Task</h1>
 
         <form action="{{ route('tasks.update', $task->id) }}" method="post">
+
             @csrf
             @method('put')
 
@@ -69,13 +70,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <!-- Assignee Section (conditionally displayed) -->
-                <!-- @if (isset($task) && $task->assignee)
-                    <label for="assignee_id">Assignee:</label>
-                    <span>{{ $task->assignee->name }}</span>
-                @else
-                    <p>No assignee selected.</p>
-                @endif -->
+
 
                 <!-- Add assignee field to the create/edit form -->
                 <label for="assignee_id">Assignee:</label>
@@ -86,7 +81,7 @@
                             {{ $user->name }}
                         </option>
                     @endforeach
-        </select>
+                </select>
     
             </div>
 

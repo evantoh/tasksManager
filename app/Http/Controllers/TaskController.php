@@ -72,7 +72,7 @@ class TaskController extends Controller
         // Delete the specified task
         $task->delete();
 
-        return redirect('/tasks')->with('success', 'Task deleted successfully!');
+        return redirect('/dashboard')->with('success', 'Task deleted successfully!');
     }
 
     // Get and display tasks which are overdue
