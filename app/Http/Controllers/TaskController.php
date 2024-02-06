@@ -16,8 +16,16 @@ class TaskController extends Controller
     // Function to list all tasks
     public function listAllTasks()
     {
+        // Get the ID of the logged-in user
+         $userId = auth()->id();
+        //  dd($userId);
+
+        // Get tasks assigned to the logged-in user from the Task model
+        $tasks = Task::where('assignee_id', $userId)->get();
+        // dd($tasks);
+
         // Get all tasks from the Task model
-        $tasks = Task::all();
+        // $tasks = Task::all();
         return view('tasks.listAllTasks', compact('tasks'));
     }
 
