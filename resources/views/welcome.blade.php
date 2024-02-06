@@ -15,7 +15,7 @@
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Welcome to the Task Management System</h1>
+        <h1>Tasks Manager</h1>
     </header>
 
     <!-- Responsive Image Section -->
@@ -37,7 +37,7 @@
     <!-- Footer Section -->
     <footer>
         <!-- Copyright Information -->
-        <p>&copy; 2024 schoolTry</p>
+        <p>&copy; 2024 schoolTry Tech Assessment</p>
     </footer>
 
     <!-- Bootstrap JS and Popper.js -->
