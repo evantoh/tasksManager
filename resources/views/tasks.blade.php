@@ -1,5 +1,6 @@
+@extends('layouts.app')
 
-<x-app-layout>
+@section('content')
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,12 +11,6 @@
         body {
             background-color: #f8f9fa;
         }
-
-        /* Navigation Bar Styles */
-        /* .navbar {
-            background-color: #007bff;
-        } */
-
         .navbar-dark .navbar-toggler-icon {
             background-color: #fff;
         }
@@ -49,6 +44,12 @@
 
         .btn-details:hover {
             background-color: #0056b3;
+        }
+        @media only screen and (max-width: 768px) {
+            main {
+                max-width: 100%;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -113,4 +114,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</x-app-layout>
+@endsection

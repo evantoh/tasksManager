@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
 <html lang="en">
 
 <head>
@@ -19,7 +21,7 @@
             background-color: #007BFF;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 1px;
         }
 
         main {
@@ -63,7 +65,7 @@
 
 <body>
     <header>
-        <h1>Task Details</h1>
+        <p>Task Details</p>
     </header>
 
     <!-- Main content section -->
@@ -94,4 +96,4 @@
         <a href="<?= route('tasks.listallTasks') ?>" class="btn btn-secondary">Back to Task List</a>
     </main>
 </body>
-</x-app-layout>
+@endsection

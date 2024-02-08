@@ -12,6 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="{{ asset('css/createTasks.css') }}" rel="stylesheet">
 
+
         
 
         <!-- Scripts -->
@@ -34,8 +35,12 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+            @yield('content')
+
             </main>
+
+            {{-- Footer --}}
+          @include('inc.footer')
         </div>
     </body>
 </html>

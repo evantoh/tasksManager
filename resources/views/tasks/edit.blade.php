@@ -1,5 +1,7 @@
 
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
 
 <html lang="en">
 <head>
@@ -39,7 +41,7 @@
 <body>
 
     <div class="container">
-        <h1>Edit Task</h1>
+        <p>Edit Task</p>
 
         <form action="{{ route('tasks.update', $task->id) }}" method="post">
 
@@ -108,4 +110,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-</x-app-layout>
+@endsection
