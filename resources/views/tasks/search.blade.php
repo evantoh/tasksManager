@@ -1,113 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Search Results</title>
-
-    <style>
-        /* Add your styles here */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .task-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .task-list li {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .task-list li:hover {
-            transform: scale(1.05);
-        }
-
-        .task-details {
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            background-color: #007BFF;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        @media only screen and (max-width: 768px) {
-            main {
-                max-width: 100%;
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Main content section -->
     <main>
-        <div>
-            <!-- Add this search form wherever you want in your view -->
+        <!-- Search Form -->
+        <div class="search-form">
+            <!-- Form for searching tasks -->
             <form action="{{ route('tasks.search') }}" method="GET">
-            @csrf
-
+                @csrf
                 <input type="text" name="query" placeholder="Search tasks...">
                 <button type="submit">Search</button>
             </form>
         </div>
+
+        <!-- Task List -->
         <ul class="task-list">
-            <?php if (!empty($tasks)): ?>
-                <?php foreach ($tasks as $task): ?>
-                    <li>
-                        <div class="task-details">
-                            <p><strong>Title:</strong> <?= htmlspecialchars($task->title) ?></p>
-                            <p><strong>Description:</strong> <?= htmlspecialchars($task->description) ?></p>
-                            <p><strong>Due Date:</strong> <?= htmlspecialchars($task->duedate) ?></p>
-                            <p><strong>Status:</strong> <?= htmlspecialchars($task->status) ?></p>
-                            <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
-                            <p><strong>Priority:</strong> <?= htmlspecialchars($task->priority) ?></p>
-                        </div>
-                        <a href="<?= route('tasks.show', $task->id) ?>" class="btn">Details</a>
-                    </li>
-                <?php endforeach; ?>
-            <?php else: ?>
+            <!-- Displaying each task in the list -->
+            @forelse($tasks as $task)
+                <li>
+                    <!-- Task Details -->
+                    <div class="task-details">
+                        <p><strong>Title:</strong> {{ $task->title }}</p>
+                        <p><strong>Description:</strong> {{ $task->description }}</p>
+                        <p><strong>Due Date:</strong> {{ $task->duedate }}</p>
+                        <p><strong>Status:</strong> {{ $task->status }}</p>
+                        <!-- Checking for assignee and displaying assignee's name -->
+                        <p><strong>Assignee:</strong> {{ $task->assignee ? $task->assignee->name : 'Unassigned' }}</p>
+                        <p><strong>Priority:</strong> {{ $task->priority }}</p>
+                    </div>
+                    <!-- Link to view task details -->
+                    <a href="{{ route('tasks.show', $task->id) }}" class="btn">Details</a>
+                </li>
+            @empty
+                <!-- Displayed when no tasks are found -->
                 <li>No tasks found.</li>
-            <?php endif; ?>
+            @endforelse
         </ul>
 
-        <a href="<?= route('tasks.create') ?>" class="btn">Create Task</a>
-        <a href="<?= route('tasks.fetchAsanaTasks') ?>" class="btn">View Tasks Asana</a>
+        <!-- Actions -->
+        <div class="actions">
+            <!-- Links for creating task and viewing tasks from Asana -->
+            <a href="{{ route('tasks.create') }}" class="btn">Create Task</a>
+            <a href="{{ route('tasks.fetchAsanaTasks') }}" class="btn">View Tasks Asana</a>
+        </div>
     </main>
-</body>
-
 @endsection

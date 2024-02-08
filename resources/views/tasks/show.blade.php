@@ -32,6 +32,4 @@
     <a href="{{ route('tasks.listallTasks') }}" class="btn btn-secondary">Back to Task List</a>
 </main>
 <link rel="stylesheet" href="{{ asset('css/show.css') }}">
-
-
 @endsection

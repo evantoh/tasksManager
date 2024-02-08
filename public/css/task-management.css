@@ -1,0 +1,40 @@
+/* task-management.css */
+
+/* Responsive Table Container Styles */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Details Button Styles */
+.btn-details {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-details:hover {
+    background-color: #0056b3;
+}
+
+/* Additional Styles for Visual Appeal */
+.table {
+    font-size: 14px;
+}
+
+.table thead th {
+    font-weight: bold;
+}
+
+.table tbody td {
+    vertical-align: middle;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}

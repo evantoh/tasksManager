@@ -1,0 +1,30 @@
+
+/* Container Margin */
+.container {
+    margin-top: 50px;  /* Add top margin to the container */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #007bff;  /* Set navbar background color */
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: #fff;  /* Set color for the navbar toggler icon */
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #fff;  /* Set text color for navbar links */
+}
+
+/* Card Styles */
+.card {
+    background-color: #fff;  /* Set card background color */
+    border: 1px solid rgba(0, 0, 0, 0.125);  /* Set card border */
+    border-radius: 0.25rem;  /* Set border radius */
+}
+
+/* Card Body Padding */
+.card-body {
+    padding: 20px;  /* Set padding for card body */
+}
